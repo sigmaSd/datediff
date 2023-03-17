@@ -1,0 +1,52 @@
+<head>
+<style>
+  /* Style for the input fields */
+input[type="date"] {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  font-weight: bold;
+  color: #333;
+    font-size: 20px;
+}
+
+/* Style for the result paragraph */
+#r {
+  font-size: 30px;
+    font-style: italic;
+  margin-top: 20px;
+    color: #23f;
+}
+
+/* Center the elements on the page */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>
+</head>
+
+<body>
+<input onchange="calc()" id="d1" type="date"/>
+<input onchange="calc()"  id="d2" type="date"/>
+<p id="r">
+
+<script>
+const dateDiff = (d1,d2) => {
+const date1 = new Date(d1);
+const date2 = new Date(d2);
+const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+return diffDays
+}
+const  calc = () => {
+  if(!d1.value || !d2.value) return
+  r.innerText = "Difference in days: " + dateDiff(d1.value,d2.value)
+}
+calc()
+
+</script>
+</body>

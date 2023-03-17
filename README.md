@@ -2,4 +2,4 @@
 
 https://datediff.deno.dev/
 
-its a pwa works installable through chrome and runnable offline
+its a pwa installable through chrome and runnable offline

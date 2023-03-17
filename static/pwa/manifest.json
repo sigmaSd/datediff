@@ -1,0 +1,13 @@
+{
+  "name": "My App",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/static/pwa/favicon.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+}

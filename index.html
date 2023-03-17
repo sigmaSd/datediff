@@ -1,4 +1,6 @@
+<script defer src="/static/pwa/app.js"></script>
 <head>
+<link rel="manifest" href="/static/pwa/manifest.json" />
 <style>
   /* Style for the input fields */
 input[type="date"] {
@@ -10,12 +12,17 @@ input[type="date"] {
     font-size: 20px;
 }
 
-/* Style for the result paragraph */
+p {
+  font-size: 20px;
+  font-style: italic;
+  color: #333;
+}
+
 #r {
   font-size: 30px;
-    font-style: italic;
+  font-style: italic;
   margin-top: 20px;
-    color: #23f;
+  color: #23f;
 }
 
 /* Center the elements on the page */
@@ -30,6 +37,7 @@ body {
 </head>
 
 <body>
+  <p> Select dates: </p>
 <input onchange="calc()" id="d1" type="date"/>
 <input onchange="calc()"  id="d2" type="date"/>
 <p id="r">

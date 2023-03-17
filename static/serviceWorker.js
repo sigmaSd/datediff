@@ -1,4 +1,5 @@
 const cacheName = "dateDiff-v1"
+const contentToCache = ["/index.html"]
 
 self.addEventListener("install", (e) => {
   console.log("[Service Worker] Install");

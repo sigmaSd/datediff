@@ -572,7 +572,7 @@ function main() {
       verbose: false,
       version: false,
       host: "0.0.0.0",
-      port: "4507",
+      port: "8000",
       cert: "",
       key: "",
     },

@@ -1,4 +1,4 @@
-const cacheName = "dateDiff-v1"
+const cacheName = "dateDiff-v2"
 const contentToCache = ["/index.html"]
 
 self.addEventListener("fetch", (e) => {
@@ -15,6 +15,21 @@ self.addEventListener("fetch", (e) => {
       cache.put(e.request, response.clone());
       return response;
     })()
+  );
+});
+
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key === cacheName) {
+            return;
+          }
+          return caches.delete(key);
+        })
+      );
+    })
   );
 });
 

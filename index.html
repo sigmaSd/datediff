@@ -1,62 +1,204 @@
 <script defer src="/static/pwa/app.js"></script>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="manifest" href="/static/pwa/manifest.json" />
-<style>
-  /* Style for the input fields */
-input[type="date"] {
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px;
-  font-weight: bold;
-  color: #333;
-    font-size: 20px;
-}
+  <link rel="manifest" href="/static/pwa/manifest.json" />
+  <style>
+    /* Style for the input fields */
+    input[type="date"] {
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+      font-weight: bold;
+      color: #333;
+      font-size: 20px;
+    }
 
-p {
-  font-size: 20px;
-  font-style: italic;
-  color: #333;
-}
+    p {
+      font-size: 20px;
+      font-style: italic;
+      color: #333;
+    }
 
-#r {
-  font-size: 30px;
-  font-style: italic;
-  margin-top: 20px;
-  color: #23f;
-}
+    #r,
+    #adr {
+      font-size: 30px;
+      font-style: italic;
+      margin-top: 20px;
+      color: #23f;
+    }
 
-/* Center the elements on the page */
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-</style>
+    /* Center the elements on the page */
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Use an external stylesheet or a style element to link this CSS code to your HTML code */
+
+    /* Use a class name to target the radio buttons */
+    .radio {
+      /* Hide the default appearance of the radio buttons */
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      /* Make them look like circles with a border */
+      width: 20px;
+      height: 20px;
+      border: 2px solid #333;
+      border-radius: 50%;
+    }
+
+    /* Use a pseudo-class to target the checked radio button */
+    .radio:checked {
+      /* Fill it with a blue color when selected */
+      background-color: #2196f3;
+    }
+
+    /* Use another class name to target the labels */
+    .label {
+      /* Align them vertically with some margin and padding */
+      font-style: italic;
+    }
+  </style>
 </head>
 
 <body>
-  <p> Select dates: </p>
-<input onchange="calc()" id="d1" type="date"/>
-<input onchange="calc()"  id="d2" type="date"/>
-<p id="r">
+  <div style="display: flex; flex-direction: row">
+    <input
+      class="radio"
+      type="radio"
+      name="buttons"
+      value="dateDiffDiv"
+      onchange="view()"
+    />
+    <label class="label">Date Difference</label>
+    <input
+      class="radio"
+      type="radio"
+      name="buttons"
+      value="addDatesDiv"
+      onchange="view()"
+    />
+    <label class="label">Add Dates</label>
+  </div>
+  <script>
+    document.querySelector("input[value=dateDiffDiv]").checked = true;
+    const view = () => {
+      var value = document.querySelector("input[name=buttons]:checked").value;
+      if (value === "dateDiffDiv") {
+        dateDiffDiv.style.display = "flex";
+        addDatesDiv.style.display = "none";
+      } else if (value === "addDatesDiv") {
+        dateDiffDiv.style.display = "none";
+        addDatesDiv.style.display = "flex";
+      }
+    };
+  </script>
 
-<script>
-const dateDiff = (d1,d2) => {
-const date1 = new Date(d1);
-const date2 = new Date(d2);
-const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-return diffDays
-}
-const  calc = () => {
-  if(!d1.value || !d2.value) return
-  r.innerText = "Difference in days: " + dateDiff(d1.value,d2.value)
-}
-calc()
+  <div
+    id="dateDiffDiv"
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <p>Select dates:</p>
+    <input onchange="calc()" id="d1" type="date" />
+    <input onchange="calc()" id="d2" type="date" />
+    <p id="r">
+      <script>
+        const dateDiff = (d1, d2) => {
+          const date1 = new Date(d1);
+          const date2 = new Date(d2);
+          const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+          const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+          return diffDays;
+        };
+        const calc = () => {
+          if (!d1.value || !d2.value) return;
+          r.innerText = "Difference in days: " + dateDiff(d1.value, d2.value);
+        };
+        calc();
+      </script>
+    </p>
+  </div>
 
-</script>
+  <div
+    id="addDatesDiv"
+    onchange="calcAddDate()"
+    style="
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <p>Add dates:</p>
+    <input onchange="calcAddDates()" id="ad1" type="date" />
+
+    <div style="display: flex; flex-direction: column">
+      <input
+        onchange="calcAddDate()"
+        type="number"
+        min="1"
+        id="ad2"
+        style="
+          justify-content: center;
+          text-align: center;
+          font-size: 18;
+          font-weight: bold;
+        "
+      />
+      <select
+        onchange="calcAddDate()"
+        id="adtype"
+        style="justify-content: center; border-radius: 5px"
+      >
+        <option value="day">Day</option>
+        <option value="week">Week</option>
+        <option value="month">Month</option>
+      </select>
+    </div>
+
+    <p id="adr">
+      <script>
+        ad1.value = new Date().toISOString().split("T")[0];
+        ad2.value = 1;
+        adtype.value = "day";
+
+        const dateWithDaysOffset = (date, days) => {
+          const newDate = new Date(date);
+          newDate.setDate(newDate.getDate() + days);
+          return newDate;
+        };
+        const calcAddDate = () => {
+          let offset = parseInt(ad2.value);
+          switch (adtype.value) {
+            case "day":
+              break;
+            case "week":
+              offset *= 7;
+              break;
+            case "month":
+              offset *= 30;
+              break;
+          }
+          adr.innerText =
+            "Date: " +
+            dateWithDaysOffset(new Date(ad1.value), offset)
+              .toUTCString()
+              .split(" ")
+              .slice(0, -2)
+              .join(" ");
+        };
+        calcAddDate();
+      </script>
+    </p>
+  </div>
 </body>

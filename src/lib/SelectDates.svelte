@@ -26,8 +26,9 @@
 </main>
 
 <style>
-  * {
+  main {
     font-size: 20px;
+    align-items: center;
   }
   div {
     display: flex;

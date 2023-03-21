@@ -611,7 +611,7 @@ function main() {
   }
 
   const wild = serverArgs._ as string[];
-  const target = posix.resolve(wild[0] ?? "");
+  const target = posix.resolve(wild[0] ?? "dist");
 
   const handler = (req: Request): Promise<Response> => {
     return serveDir(req, {

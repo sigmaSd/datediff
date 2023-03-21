@@ -1,7 +1,7 @@
 // Cache requests so the app can work offline
 // Uncomment to enable caching
 // https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers
-const cacheName = "dateDiff-v9";
+const cacheName = "dateDiff-v10";
 
 self.addEventListener("fetch", (e) => {
   e.respondWith(

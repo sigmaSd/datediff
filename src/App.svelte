@@ -32,6 +32,10 @@
 </main>
 
 <style>
+  main {
+    text-align: center;
+    justify-content: center;
+  }
   label {
     font-size: 20px;
   }

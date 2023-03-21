@@ -2,7 +2,7 @@
   import SelectDates from "./lib/SelectDates.svelte";
   import AddDates from "./lib/AddDates.svelte";
 
-  let appOption: "selectDates" | "addDates" = "selectDates";
+  let appOption: "selectDates" | "addDates" = "addDates";
 </script>
 
 <main>

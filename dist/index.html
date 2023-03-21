@@ -7,10 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Date Difference</title>
 
+  <script type="text/javascript">
+    var navigator = window.navigator;
+    if (navigator && navigator.serviceWorker) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+          registration.unregister();
+        });
+      });
+    }
+  </script>
   <script defer src="/pwa/app.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="/pwa/manifest.json" />
-  <script type="module" crossorigin src="/assets/index-51954a56.js"></script>
+
+  <script type="module" crossorigin src="/assets/index-aff3a685.js"></script>
   <link rel="stylesheet" href="/assets/index-3ff366e1.css">
 </head>
 

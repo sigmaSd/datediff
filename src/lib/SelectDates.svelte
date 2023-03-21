@@ -21,16 +21,15 @@
     {#if d1 && d2}
       <ResultP text={`Days: ${calcDiff()}`} />
     {/if}
-    <div />
   </div>
 </main>
 
 <style>
-  main {
-    font-size: 20px;
-    align-items: center;
+  * {
+    font-size: 18px;
   }
   div {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 5px;

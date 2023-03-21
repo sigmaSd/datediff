@@ -2,7 +2,7 @@
   import SelectDates from "./lib/SelectDates.svelte";
   import AddDates from "./lib/AddDates.svelte";
 
-  let appOption: "selectDates" | "addDates" = "addDates";
+  let appOption: "selectDates" | "addDates" = "selectDates";
 </script>
 
 <main>
@@ -32,10 +32,6 @@
 </main>
 
 <style>
-  main {
-    text-align: center;
-    justify-content: center;
-  }
   label {
     font-size: 20px;
   }

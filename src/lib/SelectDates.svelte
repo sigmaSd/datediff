@@ -1,8 +1,8 @@
 <script lang="ts">
   import ResultP from "./ResultP.svelte";
 
-  let d1: string;
-  let d2: string;
+  let d1 = new Date().toISOString().split("T")[0];
+  let d2 = new Date().toISOString().split("T")[0];
 
   $: calcDiff = () => {
     const date1 = new Date(d1);

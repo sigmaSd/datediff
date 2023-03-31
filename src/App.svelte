@@ -1,8 +1,8 @@
 <script lang="ts">
-  import SelectDates from "./lib/SelectDates.svelte";
+  import DateDiff from "./lib/DateDiff.svelte";
   import AddDates from "./lib/AddDates.svelte";
 
-  let appOption: "selectDates" | "addDates" = "selectDates";
+  let appOption: "dateDiff" | "addDates" = "dateDiff";
 </script>
 
 <main>
@@ -11,9 +11,9 @@
       type="radio"
       bind:group={appOption}
       name="appOption"
-      value="selectDates"
+      value="dateDiff"
     />
-    Select dates
+    Date Diff
   </label>
   <label>
     <input
@@ -22,10 +22,10 @@
       name="appOption"
       value="addDates"
     />
-    Add dates
+    Add Dates
   </label>
-  {#if appOption === "selectDates"}
-    <SelectDates />
+  {#if appOption === "dateDiff"}
+    <DateDiff />
   {:else if appOption === "addDates"}
     <AddDates />
   {/if}
@@ -33,6 +33,8 @@
 
 <style>
   label {
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;
   }
 </style>

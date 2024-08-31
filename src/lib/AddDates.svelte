@@ -32,7 +32,11 @@
 <main>
   <input bind:value={d1} type="date" />
   <div id="daysDiv">
-    <input bind:value={numInput} min={1} type="range" />
+    <div>
+        <button on:click={() => numInput = Math.max(1, numInput - 1)} style="background-color: #676774; font-size: 14px;">-</button>
+        <input bind:value={numInput} min={1} type="range" />
+        <button on:click={() => numInput++} style="background-color: #676774; font-size: 14px;">+</button>
+    </div>
     <input bind:value={numInput} min={1} type="number" />
     <select bind:value={offsetType}>
       <option>Day</option>

@@ -22,11 +22,9 @@
         break;
     }
     return dateWithDaysOffset(d1, currentOffset)
-      .toUTCString()
-      .split(" ")
-      .slice(0, -2)
-      .join(" ");
   };
+  const utc = (date) => date.toUTCString().split(" ").slice(0, -2).join(" ");
+  const iso = (date) => date.toISOString().split("T")[0];
 </script>
 
 <main>
@@ -44,7 +42,8 @@
       <option>Month</option>
     </select>
   </div>
-  <ResultP text={`Date: ${calcDate()}`} />
+  <ResultP text={`Date: ${utc(calcDate())}`} />
+  <input type="date" value={iso(calcDate())} on:change={(event)=> event.target.value = iso(calcDate())} />
 </main>
 
 <style>
